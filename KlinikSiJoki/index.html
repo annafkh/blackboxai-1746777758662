@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KlinikSiJoki</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen bg-gray-100">
+        <!-- Header -->
+        <header class="bg-blue-600 p-6">
+            <h1 class="text-white text-2xl font-bold">KlinikSiJoki</h1>
+            <p class="text-white text-sm mt-1">Temukan Klinik Terbaik</p>
+        </header>
+
+        <!-- Content -->
+        <main class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="clinics-container">
+                <!-- Clinics will be inserted here -->
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const clinics = [
+            {
+                id: '1',
+                name: 'Klinik Sejahtera',
+                description: 'Pelayanan kesehatan terbaik dengan dokter berpengalaman. Melayani berbagai layanan medis umum dan spesialis.',
+                image: 'https://images.pexels.com/photos/247786/pexels-photo-247786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                operatingHours: '08:00 - 20:00'
+            },
+            {
+                id: '2',
+                name: 'Klinik Harmoni',
+                description: 'Klinik modern dengan pelayanan prima dan fasilitas lengkap. Menyediakan layanan kesehatan terpadu.',
+                image: 'https://images.pexels.com/photos/668300/pexels-photo-668300.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                operatingHours: '07:00 - 22:00'
+            },
+            {
+                id: '3',
+                name: 'Klinik Sehat Bersama',
+                description: 'Klinik keluarga dengan pelayanan ramah dan profesional. Fokus pada kesehatan preventif dan kuratif.',
+                image: 'https://images.pexels.com/photos/3376790/pexels-photo-3376790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                operatingHours: '08:00 - 21:00'
+            },
+            {
+                id: '4',
+                name: 'Klinik Medika Plus',
+                description: 'Klinik spesialis dengan teknologi medis terkini. Memberikan pelayanan kesehatan komprehensif.',
+                image: 'https://images.pexels.com/photos/1692693/pexels-photo-1692693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                operatingHours: '07:00 - 23:00'
+            }
+        ];
+
+        const clinicsContainer = document.getElementById('clinics-container');
+
+        clinics.forEach(clinic => {
+            const clinicCard = document.createElement('div');
+            clinicCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300';
+            clinicCard.innerHTML = `
+                <img
+                    src="${clinic.image}"
+                    alt="${clinic.name}"
+                    class="w-full h-48 object-cover"
+                />
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-2">${clinic.name}</h2>
+                    <p class="text-gray-600 mb-4">${clinic.description}</p>
+                    <div class="flex items-center text-blue-600">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span>${clinic.operatingHours}</span>
+                    </div>
+                </div>
+            `;
+            clinicsContainer.appendChild(clinicCard);
+        });
+    </script>
+</body>
+</html>
